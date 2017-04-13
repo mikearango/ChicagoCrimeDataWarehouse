@@ -1,0 +1,112 @@
+---
+title: "Chicago Crime Data Description"
+author: "Michael Arango"
+date: "4/13/2017"
+output:
+  html_document:
+    highlight: textmate
+    theme: yeti
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Getting Started 
+
+## Loading Libraries
+```{r init}
+# load libraries
+library(tidyverse)
+library(lubridate)
+```
+
+## Importing Data
+```{r import, message = FALSE}
+df <- read_csv("/Users/michaelarango/Documents/ChicagoCrimeWarehouse/Data/Chicago_Crimes_2012_to_2017.csv")
+glimpse(df)
+```
+
+The orginial dataset has `r dim(df)[1]` observations and `r dim(df)[2]` variables. The grain is an individual crime reported to the Chicago Police Department between 2012 and 2017.[^1] Since our free ETL tool (Talend Data Integration) cannot handle nearly this many observations, we need to remove some observations. We start by removing all observations prior to 2016 and all 2017 observations as this is a partial year. 
+
+# Slimming Down the Data
+
+## Filtering Data by Year
+```{r years}
+table(df$Year)
+ggplot(data = df) + geom_bar(aes(x = as.factor(Year), fill = as.factor(Year))) + 
+  labs(x = "Year", y = "Number of Observations", title = "Number of Reported Crimes by Year", 
+       fill = "Year") + theme(plot.title = element_text(hjust = 0.5)) 
+df <- df %>% 
+  filter(Year == 2016)
+```
+
+As we can see from the graph, the number of crimes reported in Chicago dropped pretty substantially from 2012 to 2015 and then rose slightly in 2016. By dropping all crimes from our dataset reported before or after 2016, we reduce the number of observations from 1456714 to `r nrow(df)`. We still need to get rid of a decent amount of observations from our dataset in order to use our ETL tools. The next way we should go about slimming down our data is by checking for missing data and whether or not we can drop it. 
+
+## Checking for Missing Data
+
+```{r check missing}
+# Are there any missing values in the data?
+any(is.na(df))
+# Yes, but how many are there?
+sum(is.na(df))
+# There are 71,728 missing observations***
+# return index of columns that have missing values 
+na.cols = which(colSums(is.na(df)) > 0)
+# Break down missing values by variable
+sort(colSums(sapply(df[na.cols], is.na)), decreasing = TRUE)
+```
+
+Of the `r nrow(df)` rows, there are `r sum(is.na(df))` missing values. The output above shows the columns in the dataset that are missing values and the number of missing values. We feel comfortable dropping all values missing data in the location dimension for this project---even if it adds a small amount of bias to our results.  
+
+## Dropping Missing Data 
+
+```{r drop missing}
+# drop all rows missing data in the X Coordinate column
+df <- df %>% 
+  filter(!is.na(`X Coordinate`))
+# Check which columns still have missing data and how many
+na.cols = which(colSums(is.na(df)) > 0)
+sort(colSums(sapply(df[na.cols], is.na)), decreasing = TRUE)
+```
+
+Luckily, all observations missing `X Coordinate` information were the same ones missing data for `Y Coordinate`, `Latitude`, `Longitude`, and `Location`.[^2] By dropping these observations, we only got rid of `r 265462 - nrow(df)` observations (`r round(100 - ((nrow(df)/265462) * 100), 2)`% of all reported crimes in Chicago in 2016). We are going to go ahead and drop the 541 rows that have missing data in the `Location Description` column. 
+
+```{r drop more missing}
+# drop all rows missing data in the Location Description column
+df <- df %>% 
+  filter(!is.na(`Location Description`))
+# Are there any more NA values?
+any(is.na(df))
+```
+
+After dropping all rows with missing `Location Description` data, we have `r nrow(df)` observations left (`r round((nrow(df)/265462) * 100, 2)`% of all reported crimes in Chicago in 2016). 
+
+## Dropping Extraneous Columns
+
+There are a few columns that we decided to drop because they don't necessarily fit into a dimension in our dimensional model for the data warehouse---`IUCR`, `ID`, and `FBI`. Additionally, when we imported the data from the csv, we saw there was an arbitrary row index `X1` that could also be dropped. 
+
+```{r drop extraneous}
+# specified dplyr::select because several data analysis packages mask the dplyr select command
+df <- dplyr::select(df, -X1, -ID, -IUCR, -`FBI Code`)
+```
+
+We are left with `r dim(df)[1]` observations of `r dim(df)[2]` variables. In order to figure out a method for reducing the size of the dataset, we should look at the distribution of reported crimes in 2016 by month. 
+
+```{r}
+# drop the original Year column
+df$Year <- NULL
+
+```
+
+
+
+
+# Footnotes
+
+[^1]: Note that since we are only in the fourth month of 2017 this will not be a complete year of crime observations. 
+
+[^2]: There were also 242 `Location Description` missing values that were remedied by dropping the observations with no `X Coordinate` information.
