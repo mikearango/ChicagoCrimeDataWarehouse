@@ -26,7 +26,7 @@ library(lubridate)
 
 ## Importing Data
 ```{r import, message = FALSE}
-df <- read_csv("/Users/michaelarango/Documents/ChicagoCrimeWarehouse/Data/Chicago_Crimes_2012_to_2017.csv")
+df <- read_csv("/Users/michaelarango/Documents/ChicagoCrimeDataWarehouse/Data/Chicago_Crimes_2012_to_2017.csv")
 glimpse(df)
 ```
 
@@ -96,13 +96,46 @@ df <- dplyr::select(df, -X1, -ID, -IUCR, -`FBI Code`)
 
 We are left with `r dim(df)[1]` observations of `r dim(df)[2]` variables. In order to figure out a method for reducing the size of the dataset, we should look at the distribution of reported crimes in 2016 by month. 
 
+## Changing Date to Information We Can Use
+
 ```{r}
 # drop the original Year column
 df$Year <- NULL
-
+# split Date into Date and Time
+df <- df %>% 
+  separate(col = Date, into = c("Date", "Time"), sep = " ", extra = "merge")
+# save as date variable
+df$Date <- mdy(df$Date)
+# split date into month, day, year
+df <- df %>% 
+  separate(col = Date, into = c("Year", "Month", "Day"), sep = "-")
+# split time into hours, minutes, seconds
+df <- df %>% 
+  separate(col = Time, into = c("Hour", "Minute", "Second"), sep = ":")
+# split second
+df <- df %>% 
+  separate(col = Second, into = c("Second", "AM.PM"), sep = " ")
+# drop second
+df$Second <- NULL
+df$Hour <- as.integer(df$Hour)
+# Convert to 24 hour time
+index <- which(df$AM.PM == "PM")
+df[index, 'Hour'] <- df[index, 'Hour'] + 12
+# drop AM.PM
+df$AM.PM <- NULL
+# change 
+cols <- c(2:6)
+df[, cols] <- lapply(df[, cols], as.integer)
+df <- df %>% 
+  mutate(`Report Time` = make_datetime(Year, Month, Day, Hour, Minute))
+df$Weekday <- wday(df$`Report Time`, label = TRUE, abbr = FALSE)
 ```
 
-
+## Plotting Reported Crimes by Month
+```{r }
+ggplot(df) + geom_bar(aes(x = as.factor(Month), fill = as.factor(Month))) + labs(x = "Month", y = "Number of Reported Crimes", title = "Number of Reported Crimes by Month", 
+       fill = "Month") + theme(plot.title = element_text(hjust = 0.5)) 
+```
 
 
 # Footnotes
