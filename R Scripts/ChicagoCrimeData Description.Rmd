@@ -98,7 +98,7 @@ We are left with `r dim(df)[1]` observations of `r dim(df)[2]` variables. In ord
 
 ## Changing Date to Information We Can Use
 
-```{r}
+```{r cleaning date info}
 # drop the original Year column
 df$Year <- NULL
 # split Date into Date and Time
@@ -129,17 +129,19 @@ df[, cols] <- lapply(df[, cols], as.integer)
 df <- df %>% 
   mutate(`Report Time` = make_datetime(Year, Month, Day, Hour, Minute))
 df$Weekday <- wday(df$`Report Time`, label = TRUE, abbr = FALSE)
-df$`Report Time` <- NULL
+df$`Report Time` <- df$`Updated On` <- NULL
 ```
 
 ## Plotting Reported Crimes by Month
-```{r }
+```{r plot crimes by month}
 ggplot(df) + geom_bar(aes(x = as.factor(Month), fill = as.factor(Month))) + labs(x = "Month", y = "Number of Reported Crimes", title = "Number of Reported Crimes by Month", 
        fill = "Month") + theme(plot.title = element_text(hjust = 0.5)) 
 ```
 
 ## Randomly Sampling to Subset for Data Warehouse
 ```{r sampling}
+# set seed for reproducibility 
+set.seed(256)
 # take a random sample of n = 30,000 without replacement
 df <- df[sample(1:nrow(df), 30000, replace = FALSE), ]
 ```
@@ -148,7 +150,7 @@ df <- df[sample(1:nrow(df), 30000, replace = FALSE), ]
 
 ```{r sample plot}
 ggplot(df) + geom_bar(aes(x = as.factor(Month), fill = as.factor(Month))) + labs(x = "Month", y = "Number of Reported Crimes", title = "Number of Reported Crimes by Month", 
-       fill = "Month") + theme(plot.title = element_text(hjust = 0.5)) 
+       fill = "Month") + theme(plot.title = element_text(hjust = 0.5))
 ```
 
 The sample has roughly the same shape as the whole year. This is exactly what we wanted.
