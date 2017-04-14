@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Getting Started 
 
 ## Loading Libraries
-```{r init}
+```{r init, message = FALSE}
 # load libraries
 library(tidyverse)
 library(lubridate)
@@ -129,6 +129,7 @@ df[, cols] <- lapply(df[, cols], as.integer)
 df <- df %>% 
   mutate(`Report Time` = make_datetime(Year, Month, Day, Hour, Minute))
 df$Weekday <- wday(df$`Report Time`, label = TRUE, abbr = FALSE)
+df$`Report Time` <- NULL
 ```
 
 ## Plotting Reported Crimes by Month
@@ -137,6 +138,26 @@ ggplot(df) + geom_bar(aes(x = as.factor(Month), fill = as.factor(Month))) + labs
        fill = "Month") + theme(plot.title = element_text(hjust = 0.5)) 
 ```
 
+## Randomly Sampling to Subset for Data Warehouse
+```{r sampling}
+# take a random sample of n = 30,000 without replacement
+df <- df[sample(1:nrow(df), 30000, replace = FALSE), ]
+```
+
+## Examining the Sample Data
+
+```{r sample plot}
+ggplot(df) + geom_bar(aes(x = as.factor(Month), fill = as.factor(Month))) + labs(x = "Month", y = "Number of Reported Crimes", title = "Number of Reported Crimes by Month", 
+       fill = "Month") + theme(plot.title = element_text(hjust = 0.5)) 
+```
+
+The sample has roughly the same shape as the whole year. This is exactly what we wanted.
+
+# Write Sample Data to .csv
+
+```{r sample to csv}
+write_csv(df, "/Users/michaelarango/Documents/ChicagoCrimeDataWarehouse/Data/ChicagoSample.csv")
+```
 
 # Footnotes
 
