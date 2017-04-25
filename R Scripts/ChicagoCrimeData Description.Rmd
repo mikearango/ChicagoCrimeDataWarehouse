@@ -155,6 +155,14 @@ ggplot(df) + geom_bar(aes(x = as.factor(Month), fill = as.factor(Month))) + labs
 
 The sample has roughly the same shape as the whole year. This is exactly what we wanted.
 
+## Add Junk Key Column to the Data
+
+```{r add junk key}
+index <- seq(1, nrow(df), 1)
+df$Junk_Key <- index
+```
+
+
 # Write Sample Data to .csv
 
 ```{r sample to csv}
