@@ -13,6 +13,10 @@ WHERE `Primary Type` = "ASSAULT" AND Description = "AGGRAVATED: HANDGUN";
 SELECT * 
 FROM Chicago_Crime_Data_Warehouse.Crime_Description 
 WHERE `Primary Type` = "ASSAULT" OR `Primary Type` = "Battery";
+# select primary count and count categories
+SELECT `Primary Type`, COUNT(`Primary Type`)
+FROM Chicago_Crime_Data_Warehouse.Crime_Description
+GROUP BY `Primary Type`;
 # time queries
 SELECT Year, Month, Day
 FROM Chicago_Crime_Data_Warehouse.Time;
