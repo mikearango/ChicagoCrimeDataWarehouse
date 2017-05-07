@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendProperties="http://www.talend.org/properties">
+  <TalendProperties:Property xmi:id="_H1-bcCbyEeejh4p7sYQ1oQ" id="_H190YCbyEeejh4p7sYQ1oQ" label="Crime_Description" purpose="Load the Crime Description Table" creationDate="2017-04-21T20:25:00.838-0400" modificationDate="2017-05-01T23:48:03.094-0400" version="0.1" statusCode="" item="_H1-bcibyEeejh4p7sYQ1oQ" displayName="Crime_Description">
+    <author href="../talend.project#_Zl3TgibEEeeDgtuW4ppolA"/>
+  </TalendProperties:Property>
+  <TalendProperties:ItemState xmi:id="_H1-bcSbyEeejh4p7sYQ1oQ" path="" locked="true" lockDate="2017-05-01T23:46:56.671-0400">
+    <locker href="../talend.project#_Zl3TgibEEeeDgtuW4ppolA"/>
+  </TalendProperties:ItemState>
+  <TalendProperties:ProcessItem xmi:id="_H1-bcibyEeejh4p7sYQ1oQ" property="_H1-bcCbyEeejh4p7sYQ1oQ" state="_H1-bcSbyEeejh4p7sYQ1oQ">
+    <process href="Crime_Description_0.1.item#/"/>
+  </TalendProperties:ProcessItem>
+</xmi:XMI>

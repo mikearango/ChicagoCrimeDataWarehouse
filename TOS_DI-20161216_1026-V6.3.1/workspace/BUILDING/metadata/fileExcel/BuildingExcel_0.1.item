@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="_8QxPgBWxEeetT6qYlf46cw" name="BuildingExcel" dataPackage="_8Q2IABWxEeetT6qYlf46cw" Server="Localhost 127.0.0.1" FilePath="/Users/michaelarango/Desktop/Hands on Building.xlsx" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="_" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" selectAllSheets="true" sheetList="_:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+    <sheetColumns>C</sheetColumns>
+    <sheetColumns>D</sheetColumns>
+    <sheetColumns>E</sheetColumns>
+    <sheetColumns>F</sheetColumns>
+    <sheetColumns>G</sheetColumns>
+    <sheetColumns>H</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_8Q2IABWxEeetT6qYlf46cw" name="default" dataManager="_8QxPgBWxEeetT6qYlf46cw">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_8Q2IARWxEeetT6qYlf46cw" id="_XcJRIBWxEeetT6qYlf46cw" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2IAhWxEeetT6qYlf46cw" label="Course_Term_Code" length="6" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2IAxWxEeetT6qYlf46cw" label="Course_Reference_Number__CRN_" length="5" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2IBBWxEeetT6qYlf46cw" label="Building_Code" length="15" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2IBRWxEeetT6qYlf46cw" label="Building_Desc" length="30" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2IBhWxEeetT6qYlf46cw" label="Room_Number" length="15" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2IBxWxEeetT6qYlf46cw" label="Room_Desc" length="50" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2ICBWxEeetT6qYlf46cw" label="Campus_Group" length="15" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8Q2ICRWxEeetT6qYlf46cw" label="Campus" length="26" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

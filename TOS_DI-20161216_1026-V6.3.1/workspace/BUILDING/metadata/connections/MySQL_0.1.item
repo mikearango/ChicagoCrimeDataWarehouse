@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore" xmlns:relational="http://www.talend.org/cwm/resource/relational/2010">
+  <TalendMetadata:DatabaseConnection xmi:id="_y2eNYBWzEeetT6qYlf46cw" name="MySQL" id="_9BOmoBWyEeetT6qYlf46cw" label="MySQL" dataPackage="_y4PvABWzEeetT6qYlf46cw" DatabaseType="MySQL" DriverClass="org.gjt.mm.mysql.Driver" URL="jdbc:mysql://:3306/Building_Schema?noDatetimeStringSync=true" dbVersionString="MYSQL_5" Port="3306" Username="root" Password="/cbYJz/frlEHbUypTHZnWg==" ServerName="" DatasourceName="" FileFieldName="" SID="Building_Schema" SqlSynthax="SQL Syntax" DbmsId="mysql_id" ProductId="MYSQL" AdditionalParams="noDatetimeStringSync=true" StandardSQL="true" SQLMode="false" UiSchema="">
+    <taggedValue xmi:id="_y2yWcBWzEeetT6qYlf46cw" tag="Is Conn Need Reload" value="false"/>
+    <taggedValue xmi:id="_y3ObUBWzEeetT6qYlf46cw" tag="package filter" value=""/>
+    <taggedValue xmi:id="_y3orABWzEeetT6qYlf46cw" tag="Status" value=""/>
+    <taggedValue xmi:id="_y3orARWzEeetT6qYlf46cw" tag="Version" value="0.1"/>
+    <taggedValue xmi:id="_y3orAhWzEeetT6qYlf46cw" tag="Purpose" value=""/>
+    <taggedValue xmi:id="_y3orAxWzEeetT6qYlf46cw" tag="Description" value=""/>
+    <taggedValue xmi:id="_y3orBBWzEeetT6qYlf46cw" tag="Author" value=""/>
+    <taggedValue xmi:id="_y3orBRWzEeetT6qYlf46cw" tag="otherParameter"/>
+    <taggedValue xmi:id="_y3s8cBWzEeetT6qYlf46cw" tag="DB ProductName" value="MySQL"/>
+    <taggedValue xmi:id="_y3s8cRWzEeetT6qYlf46cw" tag="DB ProductVersion" value="5.7.17"/>
+    <taggedValue xmi:id="_y3s8chWzEeetT6qYlf46cw" tag="DB IdentifierQuoteString" value="`"/>
+    <parameters xmi:id="_y2yWcRWzEeetT6qYlf46cw" key="CONN_PARA_KEY_USERNAME" value="root"/>
+  </TalendMetadata:DatabaseConnection>
+  <orgomg.cwm.resource.relational:Catalog xmi:id="_y4PvABWzEeetT6qYlf46cw" name="Building_Schema" dataManager="_y2eNYBWzEeetT6qYlf46cw">
+    <ownedElement xsi:type="relational:TdTable" xmi:id="_7KiVUBWzEeetT6qYlf46cw" name="D_Term" id="_7KhuQBWzEeetT6qYlf46cw" label="D_Term" tableType="TABLE">
+      <taggedValue xmi:id="_7KiVURWzEeetT6qYlf46cw" tag="Comment" value=""/>
+      <taggedValue xmi:id="_7KiVUhWzEeetT6qYlf46cw" tag="Comment" value=""/>
+      <feature xsi:type="relational:TdColumn" xmi:id="_7KiVUxWzEeetT6qYlf46cw" name="D_Term_Key" label="D_Term_Key" length="10" sourceType="INT" talendType="id_Integer" key="true" nullable="false">
+        <taggedValue xmi:id="_7KiVVBWzEeetT6qYlf46cw" tag="Comment" value=""/>
+        <initialValue xsi:type="relational:TdExpression" xmi:id="_7KiVVRWzEeetT6qYlf46cw" language="COLUMN_DEF"/>
+        <sqlDataType xmi:id="_7KiVVhWzEeetT6qYlf46cw" name="INT" numericPrecisionRadix="10" javaDataType="4"/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_7KiVVxWzEeetT6qYlf46cw" name="D_Term_Code" label="D_Term_Code" length="6" sourceType="VARCHAR" talendType="id_String" nullable="false">
+        <taggedValue xmi:id="_7KiVWBWzEeetT6qYlf46cw" tag="Comment" value=""/>
+        <initialValue xsi:type="relational:TdExpression" xmi:id="_7KiVWRWzEeetT6qYlf46cw" language="COLUMN_DEF"/>
+        <sqlDataType xmi:id="_7KiVWhWzEeetT6qYlf46cw" name="VARCHAR" numericPrecisionRadix="10" javaDataType="12"/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_7KiVWxWzEeetT6qYlf46cw" name="Update_Date" label="Update_Date" length="10" sourceType="DATE" talendType="id_Date" nullable="false" pattern="&quot;dd-MM-yyyy&quot;">
+        <taggedValue xmi:id="_7KiVXBWzEeetT6qYlf46cw" tag="Comment" value=""/>
+        <initialValue xsi:type="relational:TdExpression" xmi:id="_7KiVXRWzEeetT6qYlf46cw" language="COLUMN_DEF"/>
+        <sqlDataType xmi:id="_7KiVXhWzEeetT6qYlf46cw" name="DATE" numericPrecisionRadix="10" javaDataType="91"/>
+      </feature>
+    </ownedElement>
+  </orgomg.cwm.resource.relational:Catalog>
+</xmi:XMI>

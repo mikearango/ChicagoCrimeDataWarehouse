@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendProperties="http://www.talend.org/properties">
+  <TalendProperties:Property xmi:id="_aOyzICniEeeKsJDw-bb4Bg" id="_aOyMECniEeeKsJDw-bb4Bg" label="Junk" purpose="Load the Junk Table" creationDate="2017-04-25T14:10:05.778-0400" modificationDate="2017-04-25T14:20:15.616-0400" version="0.1" statusCode="" item="_aOyzIiniEeeKsJDw-bb4Bg" displayName="Junk">
+    <author href="../talend.project#_Zl3TgibEEeeDgtuW4ppolA"/>
+  </TalendProperties:Property>
+  <TalendProperties:ItemState xmi:id="_aOyzISniEeeKsJDw-bb4Bg" path="" locked="true" lockDate="2017-05-01T23:49:06.527-0400">
+    <locker href="../talend.project#_Zl3TgibEEeeDgtuW4ppolA"/>
+  </TalendProperties:ItemState>
+  <TalendProperties:ProcessItem xmi:id="_aOyzIiniEeeKsJDw-bb4Bg" property="_aOyzICniEeeKsJDw-bb4Bg" state="_aOyzISniEeeKsJDw-bb4Bg">
+    <process href="Junk_0.1.item#/"/>
+  </TalendProperties:ProcessItem>
+</xmi:XMI>

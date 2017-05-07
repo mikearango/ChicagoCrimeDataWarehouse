@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.talend.designer.runprocess.jobLaunchConfiguration">
+<stringAttribute key="CURRENT_PROJECT_NAME" value="Chicago_Crime"/>
+<stringAttribute key="TALEND_JOB_ID" value="_2rqhACbwEeejh4p7sYQ1oQ"/>
+<stringAttribute key="TALEND_JOB_NAME" value="Police"/>
+<stringAttribute key="TALEND_JOB_VERSION" value="0.1"/>
+</launchConfiguration>

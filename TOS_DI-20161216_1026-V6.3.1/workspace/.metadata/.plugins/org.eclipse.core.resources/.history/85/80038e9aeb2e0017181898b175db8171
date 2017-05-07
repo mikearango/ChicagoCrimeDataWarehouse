@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendProperties="http://www.talend.org/properties">
+  <TalendProperties:Property xmi:id="_Q-8GcCnkEeeKsJDw-bb4Bg" id="_Q-7fYCnkEeeKsJDw-bb4Bg" label="Fact" purpose="Load the Fact Table" creationDate="2017-04-25T14:23:22.711-0400" modificationDate="2017-05-01T23:56:45.674-0400" version="0.1" statusCode="" item="_Q-8GcinkEeeKsJDw-bb4Bg" displayName="Fact">
+    <author href="../talend.project#_Zl3TgibEEeeDgtuW4ppolA"/>
+  </TalendProperties:Property>
+  <TalendProperties:ItemState xmi:id="_Q-8GcSnkEeeKsJDw-bb4Bg" path="" locked="true" lockDate="2017-05-01T23:49:18.873-0400">
+    <locker href="../talend.project#_Zl3TgibEEeeDgtuW4ppolA"/>
+  </TalendProperties:ItemState>
+  <TalendProperties:ProcessItem xmi:id="_Q-8GcinkEeeKsJDw-bb4Bg" property="_Q-8GcCnkEeeKsJDw-bb4Bg" state="_Q-8GcSnkEeeKsJDw-bb4Bg">
+    <process href="Fact_0.1.item#/"/>
+  </TalendProperties:ProcessItem>
+</xmi:XMI>
